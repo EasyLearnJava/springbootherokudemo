@@ -1,0 +1,15 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ 
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <parent>
+    <groupId>com.easylearnjava</groupId>
+    <artifactId>springbootherokudemo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+ 
+  <artifactId>springboot-rest-helloworld-02</artifactId>
+  <name>Spring boot rest application</name>
+  <description>Simple rest example with hello world message</description>
+
+</project>

@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar springboot-rest-jpa-h2-04/target/springboot-rest-jpa-h2-04-0.0.1-SNAPSHOT.jar 
