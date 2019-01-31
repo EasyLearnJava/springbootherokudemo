@@ -3,8 +3,10 @@ package com.easylearnjava.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Component;
 
 import com.easylearnjava.dao.CustomerRepository;
@@ -52,6 +54,10 @@ public class CustomerService {
 				});
 	}
 	
+	@Caching(evict = {
+			@CacheEvict(value="customer", key="#id"),
+			@CacheEvict(value="customers")
+	})
 	public 	void deleteCustomerModel(Long id) {
 		repository.deleteById(id);
 	}
