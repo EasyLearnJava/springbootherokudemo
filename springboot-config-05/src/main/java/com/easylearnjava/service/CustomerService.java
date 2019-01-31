@@ -27,7 +27,7 @@ public class CustomerService {
 		return repository.save(newCustomer);
 	}
 	
-	@Cacheable(value="customer", sync=true)
+	@Cacheable(value="customer", key="#id", sync=true)
 	public Customer one(Long id) {		
 		System.out.println("************ Strat Fetching Customer Record with Id : " + id);
 		Customer customer = repository.findById(id)
@@ -36,7 +36,7 @@ public class CustomerService {
 		return customer;
 	}
 	
-	@CachePut(value="customer")
+	@CachePut(value="customer", key="#id")
 	public Customer replaceCustomerModel(Customer newCustomer, Long id) {
 		return repository.findById(id)
 				.map(customer -> {
