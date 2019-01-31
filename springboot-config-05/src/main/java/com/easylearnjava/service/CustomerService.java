@@ -1,9 +1,10 @@
 package com.easylearnjava.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.easylearnjava.dao.CustomerRepository;
 import com.easylearnjava.model.Customer;
@@ -14,24 +15,43 @@ public class CustomerService {
 	
 	@Autowired
 	CustomerRepository repository;
-
-	public CustomerService(CustomerRepository repository) {
-		this.repository = repository;
-	}
-
+	
+	
 	@Cacheable("customers")
-	public Customer one(@PathVariable Long id) {		
-		System.out.println("11111111111111111111111111");
-		try {
-			Thread.sleep(1000*5);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public List<Customer> all() {		
+		return repository.findAll();
+	}
+	
+	public Customer newCustomer(Customer newCustomer) {
+		return repository.save(newCustomer);
+	}
+	
+	@Cacheable("customer")
+	public Customer one(Long id) {		
+		System.out.println("************ Strat Fetching Customer Record with Id : " + id);
 		Customer customer = repository.findById(id)
 				.orElseThrow(() -> new CustomerNotFoundException(id));
-		System.out.println("222222222222222222222222222");
+		System.out.println("************ Completed Fetching Customer Record with Id : " + id);
 		return customer;
+	}
+	
+	public Customer replaceCustomerModel(Customer newCustomer, Long id) {
+		return repository.findById(id)
+				.map(customer -> {
+					customer.setName(newCustomer.getName());
+					customer.setRole(newCustomer.getRole());
+					customer.setEmailId(newCustomer.getEmailId());
+					customer.setPassword(newCustomer.getPassword());
+					return repository.save(customer);
+				})
+				.orElseGet(() -> {
+					newCustomer.setId(id);
+					return repository.save(newCustomer);
+				});
+	}
+	
+	public 	void deleteCustomerModel(Long id) {
+		repository.deleteById(id);
 	}
 	
 }

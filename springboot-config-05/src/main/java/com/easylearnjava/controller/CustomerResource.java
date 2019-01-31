@@ -12,63 +12,43 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.easylearnjava.dao.CustomerRepository;
 import com.easylearnjava.model.Customer;
 import com.easylearnjava.service.CustomerService;
 
 @RestController
 public class CustomerResource {
 	
-	private final CustomerRepository repository;
+	@Autowired
+	CustomerService service;
 
-	CustomerResource(CustomerRepository repository) {
-		this.repository = repository;
+	
+	@GetMapping("/customers")
+	List<Customer> all() {		
+		return service.all();
 	}
 	
-	@Autowired
-	CustomerService cs;
-
-	@GetMapping("/customers")
-	List<Customer> all() {
-		
-		return repository.findAll();
-	}
 
 	@PostMapping("/customers")
 	Customer newCustomer(@RequestBody Customer newCustomer) {
-		
-		return repository.save(newCustomer);
+		return service.newCustomer(newCustomer);
 	}
-
-	// Single item
+	
 
 	@GetMapping("/customers/{id}")
-	Customer one(@PathVariable Long id) {		
-		
-		return cs.one(id);
+	Customer one(@PathVariable Long id) {			
+		return service.one(id);
 	}
+	
 
 	@PutMapping("/customers/{id}")
 	Customer replaceCustomerModel(@RequestBody Customer newCustomer, @PathVariable Long id) {
-		
-		return repository.findById(id)
-				.map(customer -> {
-					customer.setName(newCustomer.getName());
-					customer.setRole(newCustomer.getRole());
-					customer.setEmailId(newCustomer.getEmailId());
-					customer.setPassword(newCustomer.getPassword());
-					return repository.save(customer);
-				})
-				.orElseGet(() -> {
-					newCustomer.setId(id);
-					return repository.save(newCustomer);
-				});
+		return service.replaceCustomerModel(newCustomer, id);
 	}
 
+	
 	@DeleteMapping("/customers/{id}")
 	void deleteCustomerModel(@PathVariable Long id) {
-
-		repository.deleteById(id);
+		service.deleteCustomerModel(id);
 	}
 
 }
