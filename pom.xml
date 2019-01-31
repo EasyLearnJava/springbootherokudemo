@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<name>Spring boot demo</name>
-	<description>Parent spring boot maven module</description>
+	<description>Parent spring boot maven module example</description>
 
 	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
 	<parent>
