@@ -20,7 +20,7 @@ public class CustomerService {
 	CustomerRepository repository;
 	
 	
-	@Cacheable("customers")
+	@Cacheable(value="customers", key=" 'allCustomers' ", sync=true)
 	public List<Customer> all() {		
 		return repository.findAll();
 	}
@@ -56,7 +56,7 @@ public class CustomerService {
 	
 	@Caching(evict = {
 			@CacheEvict(value="customer", key="#id"),
-			@CacheEvict(value="customers")
+			@CacheEvict(value="customers", key=" 'allCustomers' ")
 	})
 	public 	void deleteCustomerModel(Long id) {
 		repository.deleteById(id);
