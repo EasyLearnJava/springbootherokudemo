@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import com.easylearnjava.dao.CustomerRepository;
@@ -59,7 +60,11 @@ public class CustomerService {
 			@CacheEvict(value="customers", key=" 'allCustomers' ")
 	})
 	public 	void deleteCustomerModel(Long id) {
-		repository.deleteById(id);
+		try {
+			repository.deleteById(id);
+		}catch(EmptyResultDataAccessException e) {
+			throw new CustomerNotFoundException(id);
+		}
 	}
 	
 }
