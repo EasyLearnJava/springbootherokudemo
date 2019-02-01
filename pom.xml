@@ -53,5 +53,6 @@
 		<module>springboot-customer-api-03</module>
 		<module>springboot-rest-jpa-h2-04</module>
 		<module>springboot-config-05</module>
+		<module>springboot-basic-auth-06</module>
 	</modules>
 </project>
