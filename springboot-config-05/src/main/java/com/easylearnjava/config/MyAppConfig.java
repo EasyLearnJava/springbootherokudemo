@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.easylearnjava.util.RequestLoggerInterceptor;
+import com.easylearnjava.interceptor.RequestLoggerInterceptor;
 
 @Configuration
 public class MyAppConfig implements WebMvcConfigurer {
 	
 	@Autowired
-    @Qualifier("RequestLogger")
+    @Qualifier("RequestLoggerInterceptor")
 	RequestLoggerInterceptor requestLogger;
 
     @Override
