@@ -16,3 +16,5 @@ Interceptor
 -- In the above class we can override many methods from WebMvcConfigurer like addResourceHandlers to add resource locations and also 
 
 Logging
+
+Swagger
