@@ -20,7 +20,7 @@ public class BasicConfigCustomization extends WebSecurityConfigurerAdapter {
 		auth.
 			inMemoryAuthentication().
 				withUser("ramya").
-				password(encoder.encode("customsecret")).
+				password(encoder.encode("newsecret")).
 				roles("USER").
 				and().
 				withUser("admin").
