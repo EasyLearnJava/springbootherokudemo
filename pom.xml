@@ -55,5 +55,8 @@
 		<module>springboot-config-05</module>
 		<module>springboot-basic-auth-06</module>
 		<module>springboot-basic-auth-customconfig-07</module>
+		<module>springboot-basic-auth-h2-08</module>
+		<module>springboot-basic-auth-jdbc-09</module>
+		<module>springboot-basic-auth-config-07</module>
 	</modules>
 </project>
