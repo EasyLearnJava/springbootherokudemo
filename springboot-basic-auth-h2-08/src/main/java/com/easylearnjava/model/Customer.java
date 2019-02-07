@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Customer {
 	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO) @Column(name="id")
+	@Id @GeneratedValue(strategy=GenerationType.TABLE) @Column(name="id")
 	private Long id;
 	private String name;
 	private String role;
