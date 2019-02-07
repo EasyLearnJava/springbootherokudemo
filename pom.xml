@@ -54,9 +54,7 @@
 		<module>springboot-rest-jpa-h2-04</module>
 		<module>springboot-config-05</module>
 		<module>springboot-basic-auth-06</module>
-		<module>springboot-basic-auth-customconfig-07</module>
-		<module>springboot-basic-auth-h2-08</module>
-		<module>springboot-basic-auth-jdbc-09</module>
 		<module>springboot-basic-auth-config-07</module>
+		<module>springboot-basic-auth-h2-08</module>		
 	</modules>
 </project>
