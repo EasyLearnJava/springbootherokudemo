@@ -4,4 +4,5 @@ CREATE  TABLE customers (
   role VARCHAR(45) NOT NULL ,
   emailid VARCHAR(45) NOT NULL ,
   password VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (id));
+  PRIMARY KEY (id),
+  UNIQUE KEY username (username));
