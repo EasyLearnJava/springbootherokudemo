@@ -4,6 +4,6 @@
 
 #web: java -Dserver.port=$PORT -jar springboot-basic-auth-06/target/springboot-basic-auth-06-0.0.1-SNAPSHOT.jar
 
-web: java -Dserver.port=$PORT -jar springboot-basic-auth-config-07/target/springboot-basic-auth-config-07-0.0.1-SNAPSHOT.jar
+#web: java -Dserver.port=$PORT -jar springboot-basic-auth-config-07/target/springboot-basic-auth-config-07-0.0.1-SNAPSHOT.jar
 
-# web: java -Dserver.port=$PORT -jar springboot-basic-auth-h2-08/target/springboot-basic-auth-h2-08-0.0.1-SNAPSHOT.jar 
+web: java -Dserver.port=$PORT -jar springboot-basic-auth-h2-08/target/springboot-basic-auth-h2-08-0.0.1-SNAPSHOT.jar 
