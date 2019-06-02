@@ -35,7 +35,7 @@ public class BasicConfigCustomization extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest().authenticated().and().httpBasic().
-		and().authorizeRequests().antMatchers("/guest/**").anonymous().anyRequest().authenticated();
+		and().authorizeRequests().antMatchers("/guest/**").anonymous();
 		
 		http.headers().frameOptions().disable().
 		and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
